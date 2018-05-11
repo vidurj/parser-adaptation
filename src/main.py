@@ -373,7 +373,7 @@ def test_on_brackets(args):
         processed_lines.append(' '.join(sentence))
 
     model = dy.ParameterCollection()
-    [parser] = dy.load(args.model_path_base, model)
+    [parser] = dy.load(args.model_path, model)
     embedding_file = compute_elmo_embeddings(processed_lines,
                                              os.path.join(args.experiment_directory, 'test'),
                                              args.path_to_python)
