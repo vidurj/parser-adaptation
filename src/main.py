@@ -1124,7 +1124,7 @@ def main():
         subparser.add_argument(arg)
     subparser.add_argument("--experiment-directory", required=True)
     subparser.add_argument("--path-to-python",
-                           required=True,
+                           default='python3',
                            help='Path to python environment with Allennlp. '
                                 'Example: /home/user/miniconda3/envs/allennlp/bin/python3')
 
