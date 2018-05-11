@@ -23,7 +23,6 @@ Argument | Description | Default
 --- | --- | ---
 `--experiment-directory` | Path to the directory for this experiment | N/A
 `--no-elmo` | Whether to not use ELMo word embeddings | False
-`--path-to-python` | Path to a Python installation with AllenNLP | "python3"
 `--numpy-seed` | NumPy random seed | Random
 `--word-embedding-dim` | Dimension of the learned word embeddings | 100
 `--lstm-layers` | Number of bidirectional LSTM layers | 2
@@ -44,7 +43,6 @@ Examples of partial annotations can be found in `data/biochem-train.txt`. A mode
 Argument | Description | Default
 --- | --- | ---
 `--experiment-directory` | Path to the directory for this experiment | N/A
-`--path-to-python` | Path to a Python installation with AllenNLP | "python3"
 
 The directory specified via `--experiment-directory` must exist and contain partial annotations in a file named `partial_annotations.txt`, and a pre-trained model via files `model.data` and `model.meta`. If additional trees are to be used for fine-tuning, these must be placed in a file named `additional_trees.txt`.
 Any of the DyNet command line options can also be specified.
