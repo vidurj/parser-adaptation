@@ -426,7 +426,7 @@ def test_on_brackets(args):
                 is_perfect = False
                 num_wrong += 1
 
-        parse, _ = parser.span_parser(sentence, is_train=False, elmo_embeddings=elmo_embeddings)
+        parse = parser.span_parser(sentence, is_train=False, elmo_embeddings=elmo_embeddings)
         parse_string = parse.convert().linearize()
         output_string += parse_string + '\n'
 
