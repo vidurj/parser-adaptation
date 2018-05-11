@@ -1132,7 +1132,7 @@ def main():
     subparser.add_argument("--input-file",
                            required=True,
                            help='File with sentences and partial bracketings.')
-    subparser.add_argument("--model-path-base", required=True)
+    subparser.add_argument("--model-path", required=True)
     subparser.add_argument("--experiment-directory", required=True)
     subparser.add_argument("--path-to-python",
                            default='python3',
