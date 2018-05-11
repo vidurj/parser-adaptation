@@ -23,9 +23,9 @@ def evalb(evalb_dir,
           args,
           erase_labels=False,
           flatten=False,
-          expt_name=None):
-    if expt_name is None:
-        expt_name = args.expt_name
+          experiment_direcotry=None):
+    if experiment_direcotry is None:
+        experiment_direcotry = args.experiment_directory
     assert os.path.exists(evalb_dir)
     evalb_program_path = os.path.join(evalb_dir, "evalb")
     evalb_param_path = os.path.join(evalb_dir, "COLLINS.prm")
@@ -43,15 +43,15 @@ def evalb(evalb_dir,
             gold_leaf.word == predicted_leaf.word
             for gold_leaf, predicted_leaf in zip(gold_leaves, predicted_leaves))
 
-    if not os.path.exists(expt_name):
-        os.mkdir(expt_name)
+    if not os.path.exists(experiment_direcotry):
+        os.mkdir(experiment_direcotry)
 
-    with open(os.path.join(expt_name, "params.txt"), "w") as f:
+    with open(os.path.join(experiment_direcotry, "params.txt"), "w") as f:
         f.write(str(args))
 
-    gold_path = os.path.join(expt_name, name + "-gold.txt")
-    predicted_path = os.path.join(expt_name, name + "-predicted.txt")
-    output_path = os.path.join(expt_name, name + "-output.txt")
+    gold_path = os.path.join(experiment_direcotry, name + "-gold.txt")
+    predicted_path = os.path.join(experiment_direcotry, name + "-predicted.txt")
+    output_path = os.path.join(experiment_direcotry, name + "-output.txt")
     with open(gold_path, "w") as outfile:
         for tree in gold_trees:
             if flatten:

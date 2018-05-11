@@ -258,7 +258,6 @@ class Parser(object):
             oracle_tag_is_deletable = oracle_tag in DELETABLE_TAGS
             predicted_tag_is_deletable = tag in DELETABLE_TAGS
             if oracle_tag is not None and oracle_tag not in self.tag_vocab.indices:
-                print(oracle_tag, 'not in tag vocab')
                 oracle_tag = None
             if oracle_tag is not None:
                 oracle_tag_index = self.tag_vocab.index(oracle_tag)
