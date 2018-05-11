@@ -991,7 +991,7 @@ def test_on_parses(args):
 
     treebank = trees.load_trees(args.input_file, strip_top=True, filter_none=True)
     output = [tree.linearize() for tree in treebank]
-    with open(args.experiment_directory + '/parses.txt', 'w') as f:
+    with open(os.path.join(args.experiment_directory, 'parses.txt'), 'w') as f:
         f.write('\n'.join(output))
     sentence_embeddings = h5py.File(args.elmo_embeddings_file_path, 'r')
 

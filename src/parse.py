@@ -133,7 +133,7 @@ class Feedforward(object):
         return x
 
 
-class TopDownParser(object):
+class Parser(object):
     def __init__(
             self,
             model,
