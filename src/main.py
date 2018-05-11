@@ -743,7 +743,7 @@ def run_test(args):
         os.mkdir(args.experiment_directory)
     print("Loading test trees from {}...".format(args.input_file))
 
-    test_treebank = trees.load_trees(args.trees_path)
+    test_treebank = trees.load_trees(args.input_file)
     test_tokenized_lines = parse_trees_to_string_lines(test_treebank)
     test_embeddings_file = compute_elmo_embeddings(test_tokenized_lines,
                                                    os.path.join(
