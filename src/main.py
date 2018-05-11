@@ -375,7 +375,7 @@ def test_on_brackets(args):
     model = dy.ParameterCollection()
     [parser] = dy.load(args.model_path_base, model)
     embedding_file = compute_elmo_embeddings(processed_lines,
-                                             args.experiment_directory + '/test',
+                                             os.path.join(args.experiment_directory, 'test'),
                                              args.path_to_python)
     sentences = [[(None, word) for word in line.split()] for line in processed_lines]
     num_correct = 0
@@ -445,9 +445,9 @@ def test_on_brackets(args):
         ('accuracy', num_correct / float(num_correct + num_wrong), num_correct, num_wrong)) + \
               str(('num sentences', num_sentences, 'num perfect sentences', num_perfect_sentences,
                    'fraction', num_perfect_sentences / float(num_sentences)))
-    with open(args.experiment_directory + '/trained_test_results.txt', 'w') as f:
+    with open(os.path.join(args.experiment_directory, 'trained_test_results.txt'), 'w') as f:
         f.write(results)
-    with open(args.experiment_directory + '/parses.txt', 'w') as f:
+    with open(os.path.join(args.experiment_directory, 'parses.txt'), 'w') as f:
         f.write(output_string)
 
 
@@ -1125,7 +1125,7 @@ def main():
                            help='Path to python environment with Allennlp. '
                                 'Example: /home/user/miniconda3/envs/allennlp/bin/python3')
 
-    subparser = subparsers.add_parser("test-on-brackets")
+    subparser = subparsers.add_parser("test-on-partial-annotations")
     subparser.set_defaults(callback=test_on_brackets)
     for arg in dynet_args:
         subparser.add_argument(arg)
@@ -1135,7 +1135,7 @@ def main():
     subparser.add_argument("--model-path-base", required=True)
     subparser.add_argument("--experiment-directory", required=True)
     subparser.add_argument("--path-to-python",
-                           required=True,
+                           default='python3',
                            help='Path to python environment with Allennlp. '
                                 'Example: /home/user/miniconda3/envs/allennlp/bin/python3')
 
