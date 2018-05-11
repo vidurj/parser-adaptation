@@ -22,7 +22,7 @@
 #include <stdlib.h> //### added for exit, atoi decls
 #include <ctype.h>
 #include <string.h>
-#include <malloc/malloc.h>
+#include <malloc.h>
 
 /* Internal Data format -------------------------------------------*/
 /*                                                                 */
