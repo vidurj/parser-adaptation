@@ -1,0 +1,62 @@
+[ HeLa cell microsomes ] were found to possess [ aminopyrine N-demethylase activity ] .
+To investigate [ the [ [ NADPH - ] and [ organic hydroperoxide - ] supported ] E(2) hydroxylase activities of [ the 432L , 453S form of human CYP1B1 ] ] , [ [ the MCF-7 CYP1B1 cDNA ] was cloned ] and [ the enzyme was expressed [ in Sf9 insect cells ] ] .
+[ In contrast to coumarin ] , [ dihydrocoumarin [ -- which lacks the 3,4-double bond -- ] ] produced little toxicity in rat hepatocytes either [ [ in vivo ] ( 127 and 254 mg / kg , ip ) ] or [ in vitro ] .
+[ Transfection of the human PGIS cDNA into rat VSMC ] did not affect DNA synthesis under [ serum - free ] basal conditions , but [ it [ [ increased PGI2 synthesis ] and [ decreased DNA synthesis ] ] under [ serum - stimulated ] conditions ( in the presence of [ [ 1 or 5 ] % ] fetal calf serum ) ] .
+This reaction [ [ was negligible in [ CYP2D6 - deficient ] liver microsomes ] , [ was inhibited stereoselectively by the [ quinidine / quinine ] enantiomer pair ] , and [ was cosegregated with dextromethorphan O-demethylation [ ( r { = 0.975 } ) ] ] ] .
+Interestingly , [ mIL-1 alpha ] had no effect on [ [ hCG - induced ] StAR mRNA or protein levels ] .
+[ Methoxy substitution on the phenyl ring of the methylenedioxyphenyl moiety ] increased formation of [ the P450 complex ] , whereas [ chlorine substitution ] markedly decreased [ the P450 complexation ] .
+[ Opsoclonus - myoclonus ( OM ) ] is [ a neurological disorder [ usually occurring in infancy ] , [ clinically manifested by various involuntary movements ] ] .
+[ Cell hybrids [ ( BIM ) ] ] were produced between [ human neuroblastoma cells [ ( IMR-32 ) ] ] and [ thymidine auxotrophs [ ( B3T ) ] of rat nerve - like cells [ ( B103 ) ] ] in order to obtain cell lines undergoing stable neuronal differentiation .
+Screening of [ H-ras gene point mutations ] in [ 50 cases of bladder carcinoma ] .
+In addition , we examined the effects of [ [ angiotensin II [ ( A-II ) ] ] and [ transforming growth factor - beta [ ( TGF beta ) ] ] ] on [ ACTH - treated ] cells .
+[ Two inhibitors of CYP3A4 , [ ketoconazole [ ( 1 microM ) ] and troleandomycin [ ( 100 microM ) ] ] , ] inhibited quinine 3-hydroxylation [ by about [ [ 90 % ] and [ 80 % ] ] ] , and etoposide 3'-demethylation [ by about [ [ 75 % ] and [ 65 % ] ] ] , respectively .
+These results suggest that [ the inhibitory effect of Cu(2+) on the [ P450 - catalyzed ] reactions ] may come from [ the inability of an efficient electron transfer from NPR to P450 ] and also the dysfunctional conformation of [ NPR and P450 ] .
+Accumulation of beta-catenin was seen in the [ nucleus , cytoplasm or cell membrane ] in [ [ 15 of 38 ( 39 % ) ] HCC samples ] , and gene mutation was seen in [ [ 9 of 38 ( 24 % ) ] HCC samples ] .
+[ Mutations of CTNNB1 ] were identified in [ five HCCs ] .
+[ Expression of [ the human beta (3) -adrenergic receptor gene ] in [ SK-N-MC cells ] ] is under the control of a distal enhancer .
+The [ PCB - treated ] group was distinguished [ from the corn oil vehicle control group ] only for BROD activity , [ [ with or without ] the presence of modulator ] .
+[ [ [ The substrate 4-aminobiphenyl ] and [ the competitive inhibitor 7,8-benzoflavone ] ] blocked photolabeling of P450 1A2 with 4-N3BP ] , and 4-N3BP inhibited N-hydroxylation [ of 4-aminobiphenyl ] [ by [ P450 1A2 ] ] in the usual enzyme assay .
+In contrast , in the rat , [ 7 days after exposure to TCDD [ at 10 micrograms / kg ] ] , [ [ there was no evidence of toxicity ] , [ DT-diaphorase was increased close to 7 - fold ] and [ 7-EROD , 100 - fold ] ] .
+[ [ The " direct " negative inotropic effect in atrial ] and [ the " indirect " negative inotropic effect in ventricular ] ] myocardium by M-cholinoceptor stimulation with carbachol was unchanged by halothane .
+[ The inhibition of the metabolic activation of IQ ] was paralleled by [ the inhibition of [ acetanilide 4-hydroxylase activity [ of human CYP1A2 ] ] ] .
+Here we report that the optimum condition for DNA transfection by electroporation is [ 350 V / 960 microF ] for [ PC 12 ] , [ [ 450 V / 960 microF ] for C6 cells ] , and [ [ 250 V / 500 microF ] for COS-1 cells ] .
+[ Phenanthroline [ ( an inhibitor of classes I through III isoenzymes of alcohol dehydrogenase ( ADH ) ) ] ] inhibited pancreatic ethanol oxidation by [ 90 % ] , but [ [ 4-methylpyrazole ( a [ class [ I and II ] ] ADH inhibitor ) ] , [ carbon monoxide ( a cytochrome P450 inhibitor ) ] , and [ sodium azide ( a catalase inhibitor ) ] ] had no effect .
+[ The content of cytochromes [ [ a + a3 ] , b , [ c + c1 ] , and P450 ] in [ midgut mitochondria ] ] was determined .
+[ Other CYP isozyme selective inhibitors , such as [ [ metyrapone ( CYP 2B ) ] , [ 7-pentoxyresorufin ( CYP 2B1 ) ] , [ sulfaphenazole ( CYP 2C / 3A ) ] , and [ 17-octadecynoic acid ( 4A - linked omega-hydroxylase inhibitor ) ] ] , ] did not alter [ [ [ ACh or histamine ] - induced ] EDHF response ] .
+[ [ Clotrimazole ( 1 microM ) ] , [ miconazole ( 10 microM ) ] , and [ 1-ABT ( 1 mM ) ] ] reversibly reduced [ IKss , elicited by a test potential of + 80 mV , ] by [ [ 40 , 70 , and 31 ] % ] , respectively .
+In studies with human hepatic microsomes , [ the hydroxylation of tyramine to dopamine ] was inhibited by [ [ bufuralol , a typical substrate for CYP2D isoforms , ] and [ anti - CYP2D1 ] antiserum ].
+Missense mutations [ ( [ A 53 T ] or [ A 30 P ] ) ] in [ the gene encoding alpha - syn ] are responsible for [ rare , inherited forms of PD ] .
+Nitrogen inhibited binding by [ [ [ 70 - 80 ] % ] in lung microsomes and [ [ 50 - 75 ] % ] in liver microsomes ] .
+[ One of 15 papillary carcinomas ] had a ras mutation ( [ H-ras 12 ] , [ Gly to Ser ] ) .
+[ With benzo(a)pyrene ] it was possible to induce [ [ type I ] spectral change ] in [ trout cytochrome P-450 ] .
+Anastrozole inhibited the tumor growth [ at [ 5 micrograms / mouse / day ( s.c. ) ] ] in [ [ androstenedione - treated ] ovariectomized nude mice [ inoculated with MCF-7CA cells transfected with aromatase gene ] ] .
+This activity was not inhibited by the suicide substrates , [ showing that [ the 7'-hydroxylation of (-)-ABA ] was catalyzed by a different enzyme from that which catalyzed [ 8'-hydroxylation of (+)-ABA ] ] .
+[ Increase in phosphorylation of APP by overexpression of [ the nerve growth factor receptor Trk A ] in [ 293T cells ] ] promoted the interaction of [ [ transfected APP ] and [ endogenous Shc A ] ] .
+[ Minaprine 4-hydroxylation ] followed Michaelis - Menten kinetics with [ KM and Vmax ] values of [ 5.26 microM ] and [ 0.478 nmol / min / mg ] microsomal protein , respectively , for one particular representative sample .
+[ In [ mTALH cells obtained from [ rabbits made hypertensive by aortic constriction ] ] ] there was a selective increase [ in [ P1 and P2 ] formation ] compared to other renomedullary cells .
+[ MYCN [ amplification and expression ] ] have been reported in various tumours , including neuroblastoma and [ lung cancer ] , but little is known about its expression in [ human rhabdomyosarcoma ] .
+[ The [ NG108-15 and C6 ] cell lines ] were used in the present study as [ neuronal and glial ] models , respectively , to examine the cytotoxicity of [ [ the major metabolite of cocaine ] , [ benzoylecgonine ( BE ) ] ] .
+[ Ras gene mutations ] are associated with a poor prognosis in [ patients with adenocarcinoma of the lung ] .
+The modulation by arylamines of the [ in vitro ] formation of [ superoxide anion radicals and hydrogen peroxide ] by rat liver microsomes .
+Effect of [ ketoconazole , etomidate and [ other inhibitors of steroidogenesis ] ] [ on [ cytochrome P-450sccII - catalyzed ] reactions ] .
+This study evaluates the effects of activation of [ the BDNF - TrkB signal transduction pathway ] on the [ growth , survival , morphology , and invasive capacity ] of [ NB cells ] .
+Thus , the basis for collateral resistance [ to mitomycin C ] in [ the [ cisplatin - resistant ] lines under oxic conditions ] is unrelated to [ overproduction of GSH ] .
+Effects on [ [ epoxide hydrolase ] , [ glutathione S-transferases ] , and [ cytochromes p450 ] ] .
+[ Human liver microsomal studies with S-mephenytoin ] showed that TPM partially inhibited CYP2C19 at very high concentrations of [ [ 300 microM ( [ 11 % ] inhibition ) ] and [ 900 microM ( [ 29 % ] inhibition ) ] ] .
+[ Metyrapone , [ SKF 525-A ] and [ carbon monoxide ] ] all inhibited [ the metabolism [ of 1-naphthol ] [ [ to 1,4-naphthoquinone ] and [ to covalently bound products ] ] ] suggesting the involvement of cytochrome P-450 [ in at least one step in the metabolic activation of 1-naphthol to reactive products ] .
+[ Almost all recent assays developed for the quantitative determination of [ SSRIs and their metabolites in blood ] ] are based either on [ [ the separation [ of SSRIs ] by high performance liquid chromatography [ ( HPLC ) ] ] or [ gas chromatography [ ( GC ) ] ] ] .
+Importantly , IL-6 was expressed by astrocytes of [ infected [ IL-6 +/+ ] mice ] but not in astrocytes of [ IL-6 -/- mice ] or [ uninfected [ IL-6 +/+ ] mice ] .
+[ The competitive type of inhibition of AH ] suggested a common P450 isoenzyme [ in the metabolism of [ propranolol and aniline ] ] .
+[ Anti - P450 2C8 and 2C3 antibodies ] moderately inhibited [ the biotransformation of lansoprazole ] , whereas they completely inhibited [ (S)-mephenytoin 4'-hydroxylase activity ] under the same conditions .
+We tested whether [ YC - 1 ] inhibits [ [ HIF - 1 ] and tumor growth in vivo ] .
+The effect of [ an antioxidant , disulfiram ( DSF ) , ] on the carcinogenicities of [ [ N-2-fluorenylacetamide [ ( 2-FAA ) ] ] and [ N-hydroxy-N-2-fluorenylacetamide [ ( N-OH-2-FAA ) ] ] ] was examined .
+[ An apparent partition ratio of 41 ] was determined [ with [ [ cDNA expressed ] CYP3A4 ] ] , based on the substrate depletion method .
+In response to [ Wnt signaling ] , [ [ the accumulating Cx43 ] colocalized [ with beta - catenin ] in the junctional membrane ] ; moreover , [ forced expression [ of Cx43 ] in cardiomyocytes ] reduced the transactivation potential of [ beta - catenin ] .
+[ Antisera generated against three separate regions of huntingtin ] identified [ a single high molecular weight protein of [ approximately 320 kDa ] on immunoblots of human neuroblastoma extracts ] .
+Sequence analysis did not identify [ any p53 mutations in [ the primary carcinoma or its metastases ] ] .
+[ The human lymphoblast system ] offers [ the desirable ability to couple metabolic transformation studies [ with toxicological endpoints such as cytotoxicity and mutagenicity ] ] .
+[ Results of the present study ] demonstrate that Chinese radish [ [ may not contain any mutagenic compound ] but [ does contain some nonpolar compounds with antimutagenic activity toward [ [ direct and indirect ] mutagens ] ] ] .
+[ [ CO - air ( 90 : 10 v / v ) ] , [ cytochrome c ( 10(-5) M ) ] , and [ metyrapone ( 10(-3) M ) ] ] inhibited pregnenoic acid synthesis [ to a greater extent than etienic acid ] .
+However , [ no significant differences in radiolabel recovered in lymph ] were seen [ when looking at the entire [ 24 - h ] collection period ] .
+[ The decrease in the cytochrome P450 contents ] was accompanied by a decrease in LgCl from the hepatic microsomal fractions [ [ [ by 61 % ] for the poly IC ] and [ [ by 51 % ] for the [ LPS treated ] rats ] ] .
+This study demonstrates [ a role [ for NFkappaB ] in the survival of [ S - type NB tumor cells ] ] and suggests that [ NFkappaB [ activity and function ] ] differ according to [ NB tumor cell phenotype ] .

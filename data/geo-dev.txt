@@ -1,0 +1,62 @@
+What is [ the degree measure of x ] ?
+What is [ the length of [ [ altitude h ] of this triangle ] ] ?
+What [ is the measure of [ angle ACD ] ]?
+The circles have [ the maximum diameter possible ] .
+In the accompanying diagram of [ circle O ] , [ the measure of [ angle ABC ] is [ 2*x ] ] and [ the measure of [ arc AC ] is [ x { + 60 } ] ] .
+What is the length of [ the arc AB ] ?
+In [ the diagram at the right ] , [ [ ABCD is a square ] , [ [ diagonal BD ] is extended through D to E ] , [ AD = DE ] , and [ line AE is drawn ] ] .
+In the accompanying diagram of right triangle ABC, [ [ altitude AD ] divides [ hypotenuse BC ] into [ segments with lenghts of 4 and 5 ] ] .
+A cathedral window is built [ in the shape of a semicircle ] .
+Find the measure of [ angle CDA ] .
+[ In the diagram at the right ] , [ the segments shown ] are [ tangent to the circle ] .
+[ If [ [ the radius of the circle with centre O ] is 7 ] and [ [ the measure of angle AOB ] is 100 ] ], what is the length of [ arc AB ] ?
+If [ the measure of angle P ] is equal to 40, [ what is the measure of angle PQS ] ?
+[ A and B ] [ are equidistant from [ the line l ] ] .
+In the diagram at the right, [ secant AB intersects { circle O at D } ] , [ secant AC intersects { circle O at E } ] , [ AE = 4 ] , [ AC = 24 ] , and [ AB = 16 ] .
+What [ is the area of [ the quadrilateral EBFD ] ]?
+[ BD is a line segment ] and [ BAC = [ 1/4 * ACB ] ]
+Find the measure of [ angle DBC ] .
+[ The length of [ the side of the square ] ] is 2.
+In the accompanying diagram, [ [ [ tangent AB ] and [ secant AD ] ] are [ drawn to circle O from [ point A ] ] ], [ AB = 6 ] and [ AC = 4 ] .
+[ In the diagram at the right ] , [ [ line a ] is parallel to [ line b ] ] , and [ [ line t ] is a transversal ] .
+Find the measure of [ angle BEF ] .
+Two equal circles are cut out of [ a rectangle of card of [ dimensions 16 by 8 ] ] .
+Given [ the circle [ at the right ] [ with diameter AB ] ] , find x.
+Given [ [ Circle O ] with [ diameter CD ] ] .
+ASB is [ a quarter circle ] .
+The diagram [ at the right ] shows a right triangle [ with representations for two angles ] .
+{ BD = } 2 .
+In [ the accompanying diagram ] , [ [ line PQ and line PS ] are [ tangents drawn to circle O ] ], and [ [ chord QS ] is drawn ].
+Given [ a circle [ with two secants ] ] as shown at the right.
+Find [ the value of x ] .
+If [ the area of the circle ] is [ 4a^2*pi ] , what is the area of the square?
+In [ the diagram at the right ] , [ [ lines [ f and g ] ] are parallel ] , and [ [ lines [ a and b ] ] are parallel ] .
+Find [ the measure of angle HGD ] .
+If [ the measure of [ angle ACD ] ] is 48, find the measure of [ angle B ] .
+[ In the figure above ] , if [ x < [ 90*\degree ] ] then [ [ which of the following ] must be true ] ?
+What is the area of [ triangle AEC ] ?
+The diagram below illustrates [ the construction of line PS parallel to { line RQ through point P } ] .
+ABCD is a square with [ side 3 ] , and [ [ E and F ] are the midpoints of [ sides [ AB and BC ] ] respectively ] .
+[ What is the area of the following square ] , [ if the length of BD is [ 2*sqrt(2) ] ] ?
+Which statement [ is not true ] ?
+x { = 75 } .
+Given [ a circle with [ the center indicated ] ] .
+Find the length of [ the segment labeled x ] .
+Find the length of [ leg AB ] .
+[ Which of the following ] could be the length of line DB?
+In triangle ABC, [ line BC is extended to E ] , and [ D is a point on line BC ] .
+[ If [ [ 1 = 97 ] and [ 2 = 44 ] ] ] , find 3.
+[ Which two angles ] [ are not always congruent ] ?
+[ In the accompanying diagram of [ rectangle ABCD ] ] , [ the measure of [ angle ABE ] is 30 ] and [ the measure of [ angle CFE ] is 144 ] .
+In circle O, [ [ secant SD intersects the circle at C ] and [ secant SB intersects the circle at A ] ] .
+[ The measure of angle BAC is 30 ] , and [ the measure of angle CDE is 50 ] .
+In the accompanying diagram, [ line AB is parallel with [ line CD and line FHE ] ] , [ AEF { = 40 } ] , and [ FHG { = 60 } ] .
+If [ [ SC { = 6 } ] , [ { CD = } 8 ] , and [ SA { = 4 } ] ] , find AB.
+PQRS is [ a rectangle with [ sides [ PQ and PS ] ] ] .
+[ In the diagram at the right ] , [ the angles are represented as shown ] .
+If [ [ CD = 8 ] and [ BE = 2 ] ] , find AE.
+In [ triangle ABC ] , [ [ AD = DB ] , [ DE is parallel to BC ] , and [ the area of [ triangle ABC ] is 40 ] ] .
+What is the ratio [ of the area of [ triangle QST ] ] [ to the area of the parallelogram ] ?
+Which statement [ justifies this construction ] ?
+In [ the rhombus PQRS ], [ [ PR = 24 ] and [ QS = 10 ] ].
+What [ is the length of BD ] ?

@@ -1,0 +1,63 @@
+[ In the accompanying diagram ] , ABC is [ an equilateral triangle with a perimeter of 30 ] .
+What is [ the value of [ y { + z } ] ] ?
+[ The square ABCD ] touches [ the circle ] at 4 points.
+[ Points [ A, { B, C, and D } ] ] are [ midpoints of the sides of [ square JETS ] ] .
+What is [ the area of [ triangle ADE ] ] ?
+What is the perimeter of [ the part of the figure that is not shaded ] ?
+[ The half circle with diameter AD ] has [ an area of 8*pi ] .
+[ The diagram at the right ] shows the construction of [ the perpendicular bisector of AB ] .
+In [ the diagram at the right ] , [ AC = DC = DB ] .
+If [ the area of JETS ] is 36, what [ is the area of ABCD ] ?
+In [ the diagram at the right ] , [ parallel lines [ a and m ] ] are cut by [ transversal t ] , [ 1 = 4x + 16 ] and [ 2 = 2x - 22 ] .
+[ In the diagram at the right ] , [ [ circle O ] has a radius of 5 ] , and [ CE { = 2 } ] .
+[ In the diagram at the right ] , [ lines [ a and m ] ] are parallel with [ transversal t ] .
+[ In [ the figure above ] ] [ the square has [ two sides which are tangent to the circle ] ] .
+What is the approximate area of the paper remaining [ after the circles have been cut out ] ?
+In [ the figure above ] , [ [ AD { = 4 } ] , [ { AB = } 3 ] and [ CD = 9 ] ] .
+In [ the diagram at the right ] , [ lines [ a and m ] ] [ [ are parallel ] and [ are cut by transversal t ] ] .
+Find [ the measure of [ the angle designated by x ] ] .
+[ The angles of [ triangle BCD ] ] are all equal.
+Find [ the area of the shaded region ] .
+What is [ measure of the angle DEB ] ?
+[ Which of the following ] could be [ a value of x ] , in [ the diagram above ] ?
+In triangle ABC, [ line DE is [ parallel with line AC ] ] , [ DB { = 4 } ] , [ AD = 8 ] , and [ DE { = 5 } ] .
+Which of the following [ must be true ] ?
+[ Which of the following statement ] is not true?
+In [ the diagram below of triangle ABC ] , [ D is a point on [ line AB ] ] , [ AC { = 7 } ] , [ AD { = 6 } ] , and [ { BC = } 18 ] .
+Find [ the value of x ] .
+Given [ tangent AC to [ the circle shown at the right ] ] .
+[ In the accompanying diagram of [ rhombus ABCD ] ] , [ the measure of [ angle CAB ] ] is 35.
+[ In the accompanying diagram ] , [ [ { BA = } BC ] and [ x { = 117 } ] ] .
+[ In the accompanying diagram of circle O ] , [ chords AB and CD intersect at E ] and [ [ AC : CB : BD : DA ] = [ 4 : 2 : 6 : 8 ] ] .
+The diagram at the right shows [ the construction of a perpendicular, line PX, to a [ line l ] from [ point P ] ] .
+Given the circle [ at the right ] [ with two intersecting chords ].
+[ If [ [ the measure of ABD ] =3*x-4 ] , [ DBE=x-3 ] , [ ABC=31 ] , and [ EBC=2*x-10 ] ] , then what [ is the value of x ] ?
+How many circles can be drawn [ with their centers on [ line l ] ] and that pass through [ both A and B ] ?
+[ The arc drawn from point P ] [ intersects [ line l ] at [ A and B ] ] , and [ the arcs drawn from [ points [ A and B ] ] intersect { line PX at C } ] .
+In [ the figure below ] , [ what [ is the value of y ] ] ?
+The diagram at the right [ is a construction [ involving angle ABC ] ] .
+[ Which of the statements ] is not always true about this construction?
+[ In the accompanying diagram ] , [ [ line FG ] is parallel with [ line HI and line BC ] ] and [ line AD intersects at E ] , [ GBE = 3x + 20 ] , and [ ECD = x ] .
+[ AB and DE ] are parallel.
+In [ the figure above ] , [ [ line BE ] is perpendicular to [ line AD ] ] and [ [ line CF ] is perpendicular to [ line AD ] ] and [ AE = EF ] .
+[ PQ { = 8 } ] and [ PS { = 6 } ] .
+Find [ the measure of [ the arc designated by x ] ] .
+What [ is the value of x ] ?
+[ Rectangle ABCD ] has [ a perimeter of 26 ] .
+Find [ angle of [ arc CA ] ] .
+Given [ the circle [ at the right ] with [ designated center, designated perpendicular, and radius 5 ] ] .
+Given [ the circle { at the right with the indicated center } ] .
+Given [ triangle ABC with [ base AFEDC ] , [ median BF ] , [ altitude BD ] ] , and [ BE bisects angle ABC ] , which conclusion is valid?
+In the figure above, if [ the measure of angle AOB is [ 40*\degree ] and the length of arc AB is [ 4*\pi ] ] , [ what is the area of the sector AOB ] ?
+Find [ the measure of [ the arc designated by x ] ] .
+What is [ the perimeter of the parallelogram ] ?
+Given [ the circle [ at the right ] [ with two tangents to the circle from a common external point ] ] .
+What is the measure of [ angle DAE ] ?
+Find [ the perimeter of the rhombus ] .
+Express { answer to the nearest square foot } .
+Find [ the measure of [ the angle designated by x ] ] .
+[ AB is parallel with CD ] and [ AB=80*\degree ] .
+If the window is to contain [ three stained glass sections of equal size ] , [ what is the area of [ each stained glass section ] ] ?
+ABCD [ is a parallelogram ] .
+[ PQRS is a parallelogram ] and [ ST { = TR } ] .
+[ Diameter AC ] is perpendicular [ to chord BD ] [ at E ] .
