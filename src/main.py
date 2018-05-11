@@ -133,8 +133,8 @@ def load_parses(file_path):
 
 
 def evaluate_on_brown_corpus(args):
-    if not os.path.exists(args.expt_name):
-        os.mkdir(args.expt_name)
+    if not os.path.exists(args.experiment_directory):
+        os.mkdir(args.experiment_directory)
 
     model = dy.ParameterCollection()
     [parser] = dy.load(args.model_path_base, model)
@@ -145,7 +145,7 @@ def evaluate_on_brown_corpus(args):
         print('-' * 100)
         print(directory)
         input_file = '../brown/' + directory + '/' + directory + '.all.mrg'
-        expt_name = args.expt_name + '/' + directory
+        expt_name = args.experiment_directory + '/' + directory
         if not os.path.exists(expt_name):
             os.mkdir(expt_name)
         cleaned_corpus_path = trees.cleanup_text(input_file)
@@ -168,7 +168,7 @@ def evaluate_on_brown_corpus(args):
             if args.use_elmo:
                 embeddings_np = embedding_file[str(tree_index)][:, :, :]
                 assert embeddings_np.shape[1] == len(sentence), (
-                embeddings_np.shape[1], len(sentence))
+                    embeddings_np.shape[1], len(sentence))
                 embeddings = dy.inputTensor(embeddings_np)
             else:
                 embeddings = None
@@ -213,8 +213,8 @@ def evaluate_on_brown_corpus(args):
 
 
 def run_test_qbank(args):
-    if not os.path.exists(args.expt_name):
-        os.mkdir(args.expt_name)
+    if not os.path.exists(args.experiment_directory):
+        os.mkdir(args.experiment_directory)
 
     print("Loading model from {}...".format(args.model_path_base))
     model = dy.ParameterCollection()
@@ -328,8 +328,8 @@ def compute_elmo_embeddings(tokenized_lines, expt_name, path_to_python):
 
 
 def test_on_brackets(args):
-    if not os.path.exists(args.expt_name):
-        os.mkdir(args.expt_name)
+    if not os.path.exists(args.experiment_directory):
+        os.mkdir(args.experiment_directory)
 
     with open(args.input_file, 'r') as f:
         lines = f.read().splitlines()
@@ -375,7 +375,7 @@ def test_on_brackets(args):
     model = dy.ParameterCollection()
     [parser] = dy.load(args.model_path_base, model)
     embedding_file = compute_elmo_embeddings(processed_lines,
-                                             args.expt_name + '/test',
+                                             args.experiment_directory + '/test',
                                              args.path_to_python)
     sentences = [[(None, word) for word in line.split()] for line in processed_lines]
     num_correct = 0
@@ -439,23 +439,25 @@ def test_on_brackets(args):
           num_correct_original / float(len(original_brackets)))
     print('accuracy', num_correct / float(num_correct + num_wrong), num_correct, num_wrong)
     print(
-    'num sentences', num_sentences, 'num perfect sentences', num_perfect_sentences, 'fraction',
-    num_perfect_sentences / float(num_sentences))
+        'num sentences', num_sentences, 'num perfect sentences', num_perfect_sentences, 'fraction',
+        num_perfect_sentences / float(num_sentences))
     results = str(args) + '\n' + str(
         ('accuracy', num_correct / float(num_correct + num_wrong), num_correct, num_wrong)) + \
               str(('num sentences', num_sentences, 'num perfect sentences', num_perfect_sentences,
                    'fraction', num_perfect_sentences / float(num_sentences)))
-    with open(args.expt_name + '/trained_test_results.txt', 'w') as f:
+    with open(args.experiment_directory + '/trained_test_results.txt', 'w') as f:
         f.write(results)
-    with open(args.expt_name + '/parses.txt', 'w') as f:
+    with open(args.experiment_directory + '/parses.txt', 'w') as f:
         f.write(output_string)
 
 
 def train_on_brackets(args):
-    if not os.path.exists(args.expt_name):
-        os.mkdir(args.expt_name)
+    args.model_path_base = os.path.join(args.experiment_directory, 'model')
 
-    with open(args.input_file, 'r') as f:
+    if not os.path.exists(args.experiment_directory):
+        os.mkdir(args.experiment_directory)
+
+    with open(os.path.join(args.experiment_directory, 'partial_annotations.txt'), 'r') as f:
         lines = f.read().splitlines()
 
     nlp = spacy.load('en')
@@ -493,16 +495,32 @@ def train_on_brackets(args):
         processed_lines.append(' '.join(sentence))
         stripped_tokens = [x for x in tokens if x != '[' and x != ']' and x != '{' and x != '}']
         assert processed_lines[-1].split() == stripped_tokens, (
-        processed_lines[-1].split(), stripped_tokens)
+            processed_lines[-1].split(), stripped_tokens)
 
-    wsj_train = load_parses(args.wsj_train_trees_path)
-    parser, model = load_or_create_model(args, wsj_train)
+    additional_trees_path = os.path.join(args.experiment_directory, 'additional_trees.txt')
+    if os.path.exists(additional_trees_path):
+        print('Training on', additional_trees_path)
+        additional_train_trees = load_parses(additional_trees_path)
+        additional_trees_indices = list(range(len(additional_train_trees)))
+
+        if not args.no_elmo:
+            additional_tokenized_lines = parse_trees_to_string_lines(additional_train_trees)
+            additional_embeddings_file = compute_elmo_embeddings(additional_tokenized_lines,
+                                                                 os.path.join(
+                                                                     args.experiment_directory,
+                                                                     'additional_embeddings'),
+                                                                 args.path_to_python)
+    else:
+        print('No additional training trees.')
+        additional_train_trees = []
+        additional_trees_indices = []
+
+    parser, model = load_or_create_model(args, additional_train_trees)
     trainer = dy.AdamTrainer(model)
-    embedding_file = compute_elmo_embeddings(processed_lines, args.expt_name)
+    embedding_file = compute_elmo_embeddings(processed_lines, args.experiment_directory,
+                                             args.path_to_python)
 
-    wsj_embedding_file = h5py.File(args.wsj_train_elmo_embeddings_path, 'r')
     sentences = [[(None, word) for word in line.split()] for line in processed_lines]
-    wsj_indices = []
     for epoch in itertools.count(start=1):
         dy.renew_cg()
 
@@ -555,20 +573,18 @@ def train_on_brackets(args):
         print('accuracy', num_correct / float(num_correct + num_wrong), num_correct, num_wrong)
 
         batch_losses = [loss]
-
-        for _ in range(50):
-            if not wsj_indices:
-                wsj_indices = list(range(39832))
-                random.shuffle(wsj_indices)
-
-            index = wsj_indices.pop()
-            tree = wsj_train[index]
+        random.shuffle(additional_trees_indices)
+        for index in additional_trees_indices[:50]:
+            tree = additional_train_trees[index]
             sentence = [(leaf.tag, leaf.word) for leaf in tree.leaves]
-            wsj_embeddings_np = wsj_embedding_file[str(index)][:, :, :]
-            assert wsj_embeddings_np.shape[1] == len(sentence)
-            wsj_embeddings = dy.inputTensor(wsj_embeddings_np)
+            if additional_embeddings_file is not None:
+                embeddings_np = additional_embeddings_file[str(index)][:, :, :]
+                assert embeddings_np.shape[1] == len(sentence)
+                embeddings = dy.inputTensor(embeddings_np)
+            else:
+                embeddings = None
             loss = parser.span_parser(sentence, is_train=True, gold=tree,
-                                      elmo_embeddings=wsj_embeddings)
+                                      elmo_embeddings=embeddings)
             batch_losses.append(loss)
 
         batch_loss = dy.average(batch_losses)
@@ -604,29 +620,30 @@ def parse_trees_to_string_lines(trees):
 
 
 def train_on_parses(args):
-    args.model_path_base = os.path.join(args.expt_name, 'model')
-    train_parses = load_parses(os.path.join(args.expt_name, 'train_trees.txt'))
+    args.model_path_base = os.path.join(args.experiment_directory, 'model')
+    train_parses = load_parses(os.path.join(args.experiment_directory, 'train_trees.txt'))
     train_indices = list(range(len(train_parses)))
     if not args.no_elmo:
         train_tokenized_lines = parse_trees_to_string_lines(train_parses)
         train_embeddings = compute_elmo_embeddings(train_tokenized_lines,
-                                                   os.path.join(args.expt_name,
+                                                   os.path.join(args.experiment_directory,
                                                                 'train_embeddings'),
                                                    args.path_to_python)
     else:
         train_embeddings = None
 
-    dev_trees = trees.load_trees(os.path.join(args.expt_name, 'dev_trees.txt'))
+    dev_trees = trees.load_trees(os.path.join(args.experiment_directory, 'dev_trees.txt'))
 
     if not args.no_elmo:
         dev_tokenized_lines = parse_trees_to_string_lines(dev_trees)
         dev_embeddings = compute_elmo_embeddings(dev_tokenized_lines,
-                                                 os.path.join(args.expt_name, 'dev_embeddings'),
+                                                 os.path.join(args.experiment_directory,
+                                                              'dev_embeddings'),
                                                  args.path_to_python)
     else:
         dev_embeddings = None
 
-    additional_trees_path = os.path.join(args.expt_name, 'additional_trees.txt')
+    additional_trees_path = os.path.join(args.experiment_directory, 'additional_trees.txt')
     if os.path.exists(additional_trees_path):
         print('Training on', additional_trees_path)
         additional_train_trees = load_parses(additional_trees_path)
@@ -635,8 +652,9 @@ def train_on_parses(args):
         if not args.no_elmo:
             additional_tokenized_lines = parse_trees_to_string_lines(additional_train_trees)
             additional_embeddings_file = compute_elmo_embeddings(additional_tokenized_lines,
-                                                                 os.path.join(args.expt_name,
-                                                                              'additional_embeddings'),
+                                                                 os.path.join(
+                                                                     args.experiment_directory,
+                                                                     'additional_embeddings'),
                                                                  args.path_to_python)
     else:
         print('No additional training trees.')
@@ -667,7 +685,7 @@ def train_on_parses(args):
                 if train_embeddings is not None:
                     embeddings_np = train_embeddings[str(tree_index)][:, :, :]
                     assert embeddings_np.shape[1] == len(sentence), (
-                    embeddings_np.shape, len(sentence), sentence)
+                        embeddings_np.shape, len(sentence), sentence)
                     embeddings = dy.inputTensor(embeddings_np)
                 else:
                     embeddings = None
@@ -724,8 +742,8 @@ def train_on_parses(args):
 
 
 def run_train_question_bank(args):
-    if not os.path.exists(args.expt_name):
-        os.mkdir(args.expt_name)
+    if not os.path.exists(args.experiment_directory):
+        os.mkdir(args.experiment_directory)
 
     all_trees = trees.load_trees(args.question_bank_trees_path)
     all_parses = [tree.convert() for tree in all_trees]
@@ -779,7 +797,7 @@ def run_train_question_bank(args):
     else:
         print('not training on wsj')
 
-    indices_file_path = args.expt_name + '/train_tree_indices.txt'
+    indices_file_path = args.experiment_directory + '/train_tree_indices.txt'
     if os.path.exists(indices_file_path):
         with open(indices_file_path, 'r') as f:
             tree_indices = [int(x) for x in f.read().splitlines()]
@@ -811,7 +829,7 @@ def run_train_question_bank(args):
                 sentence = [(leaf.tag, leaf.word) for leaf in tree.leaves]
                 embeddings_np = qb_embeddings_file[str(tree_index)][:, :, :]
                 assert embeddings_np.shape[1] == len(sentence), (
-                embeddings_np.shape, len(sentence), sentence)
+                    embeddings_np.shape, len(sentence), sentence)
                 embeddings = dy.inputTensor(embeddings_np)
                 loss = parser.span_parser(sentence, is_train=True, gold=tree,
                                           elmo_embeddings=embeddings)
@@ -911,8 +929,8 @@ def check_performance_and_save(parser,
 
 # TODO support no elmo case
 def run_test(args):
-    if not os.path.exists(args.expt_name):
-        os.mkdir(args.expt_name)
+    if not os.path.exists(args.experiment_directory):
+        os.mkdir(args.experiment_directory)
     print("Loading test trees from {}...".format(args.trees_path))
     sentence_embeddings = h5py.File(args.elmo_embeddings_path, 'r')
     test_treebank = trees.load_trees(args.trees_path)
@@ -965,18 +983,18 @@ def produce_elmo_for_treebank(args):
         assert sentence1 == sentence2, (sentence1, sentence2)
     sentences = [[leaf.word for leaf in tree.leaves] for tree in treebank]
     tokenized_lines = [' '.join(sentence) for sentence in sentences]
-    compute_elmo_embeddings(tokenized_lines, args.expt_name, args.path_to_python)
+    compute_elmo_embeddings(tokenized_lines, args.experiment_directory, args.path_to_python)
 
 
 def test_on_parses(args):
-    if not os.path.exists(args.expt_name):
-        os.mkdir(args.expt_name)
+    if not os.path.exists(args.experiment_directory):
+        os.mkdir(args.experiment_directory)
     model = dy.ParameterCollection()
     [parser] = dy.load(args.model_path_base, model)
 
     treebank = trees.load_trees(args.input_file, strip_top=True, filter_none=True)
     output = [tree.linearize() for tree in treebank]
-    with open(args.expt_name + '/parses.txt', 'w') as f:
+    with open(args.experiment_directory + '/parses.txt', 'w') as f:
         f.write('\n'.join(output))
     sentence_embeddings = h5py.File(args.elmo_embeddings_file_path, 'r')
 
@@ -995,7 +1013,7 @@ def test_on_parses(args):
         sentence = [(leaf.tag, leaf.word) for leaf in tree.leaves]
         elmo_embeddings_np = sentence_embeddings[str(tree_index)][:, :, :]
         assert elmo_embeddings_np.shape[1] == len(sentence), (
-        elmo_embeddings_np.shape[1], len(sentence), [word for pos, word in sentence])
+            elmo_embeddings_np.shape[1], len(sentence), [word for pos, word in sentence])
         elmo_embeddings = dy.inputTensor(elmo_embeddings_np)
         predicted, (additional_info, c, t) = parser.span_parser(sentence, is_train=False,
                                                                 elmo_embeddings=elmo_embeddings)
@@ -1044,7 +1062,7 @@ def test_on_parses(args):
             format_elapsed(start_time),
         )
     )
-    with open(os.path.join(args.expt_name, "confusion_matrix.pickle"), "wb") as f:
+    with open(os.path.join(args.experiment_directory, "confusion_matrix.pickle"), "wb") as f:
         pickle.dump(total_confusion_matrix, f)
 
 
@@ -1076,7 +1094,7 @@ def main():
     for arg in dynet_args:
         subparser.add_argument(arg)
     subparser.set_defaults(callback=train_on_parses)
-    subparser.add_argument("--expt-name", required=True)
+    subparser.add_argument("--experiment-directory", required=True)
     subparser.add_argument("--no-elmo", action="store_true")
     subparser.add_argument("--path-to-python", default="python3")
 
@@ -1091,19 +1109,43 @@ def main():
     subparser.add_argument("--evalb-dir", default="EVALB/")
     subparser.add_argument("--batch-size", type=int, default=10)
 
-    subparser = subparsers.add_parser("test-on-trees")
+    subparser = subparsers.add_parser("test-on-parses")
     for arg in dynet_args:
         subparser.add_argument(arg)
     subparser.set_defaults(callback=test_on_parses)
     subparser.add_argument("--input-file", required=True)
-    subparser.add_argument("--expt-name", required=True)
+    subparser.add_argument("--experiment-directory", required=True)
     subparser.add_argument("--elmo-embeddings-file-path", required=True)
     subparser.add_argument("--model-path-base", required=True)
+
+    subparser = subparsers.add_parser("train-on-partial-annotations")
+    subparser.set_defaults(callback=train_on_brackets)
+    for arg in dynet_args:
+        subparser.add_argument(arg)
+    subparser.add_argument("--experiment-directory", required=True)
+    subparser.add_argument("--path-to-python",
+                           required=True,
+                           help='Path to python environment with Allennlp. '
+                                'Example: /home/user/miniconda3/envs/allennlp/bin/python3')
+
+    subparser = subparsers.add_parser("test-on-brackets")
+    subparser.set_defaults(callback=test_on_brackets)
+    for arg in dynet_args:
+        subparser.add_argument(arg)
+    subparser.add_argument("--input-file",
+                           required=True,
+                           help='File with sentences and partial bracketings.')
+    subparser.add_argument("--model-path-base", required=True)
+    subparser.add_argument("--experiment-directory", required=True)
+    subparser.add_argument("--path-to-python",
+                           required=True,
+                           help='Path to python environment with Allennlp. '
+                                'Example: /home/user/miniconda3/envs/allennlp/bin/python3')
 
     subparser = subparsers.add_parser("produce-elmo-for-treebank")
     subparser.set_defaults(callback=produce_elmo_for_treebank)
     subparser.add_argument("--input-file", required=True)
-    subparser.add_argument("--expt-name", required=True)
+    subparser.add_argument("--experiment-directory", required=True)
     subparser.add_argument("--path-to-python",
                            required=True,
                            help='Path to python environment with Allennlp. '
@@ -1127,90 +1169,11 @@ def main():
     subparser.add_argument("--use-elmo", action="store_true")
     subparser.add_argument("--input-file", required=True)
     subparser.add_argument("--model-path-base", required=True)
-    subparser.add_argument("--expt-name", required=True)
+    subparser.add_argument("--experiment-directory", required=True)
     subparser.add_argument("--path-to-python",
                            required=True,
                            help='Path to python environment with Allennlp. '
                                 'Example: /home/user/miniconda3/envs/allennlp/bin/python3')
-
-    subparser = subparsers.add_parser("train-on-brackets")
-    subparser.set_defaults(callback=train_on_brackets)
-    for arg in dynet_args:
-        subparser.add_argument(arg)
-    subparser.add_argument("--input-file",
-                           required=True,
-                           help='File with sentences and partial bracketings.')
-    subparser.add_argument("--model-path-base", required=True)
-    subparser.add_argument("--expt-name", required=True)
-
-    subparser = subparsers.add_parser("test-on-brackets")
-    subparser.set_defaults(callback=test_on_brackets)
-    for arg in dynet_args:
-        subparser.add_argument(arg)
-    subparser.add_argument("--input-file",
-                           required=True,
-                           help='File with sentences and partial bracketings.')
-    subparser.add_argument("--model-path-base", required=True)
-    subparser.add_argument("--expt-name", required=True)
-    subparser.add_argument("--path-to-python",
-                           required=True,
-                           help='Path to python environment with Allennlp. '
-                                'Example: /home/user/miniconda3/envs/allennlp/bin/python3')
-
-    subparser = subparsers.add_parser("train-on-question-bank")
-    subparser.set_defaults(callback=run_train_question_bank)
-    for arg in dynet_args:
-        subparser.add_argument(arg)
-
-    subparser.add_argument("--train-on-wsj", required=True,
-                           help='Whether or not to train on the WSJ corpus. '
-                                'Must be either "true" or "false".')
-    subparser.add_argument("--num-samples",
-                           required=True,
-                           help='Number of sentences to train on from Question Bank.')
-
-    subparser.add_argument("--expt-name",
-                           required=True,
-                           help='The name of the experiment. '
-                                'All results will be stored under this directory.')
-    subparser.add_argument("--model-path-base",
-                           required=True,
-                           help='Path prefix with which to save the model.')
-    subparser.add_argument("--question-bank-trees-path",
-                           default='questionbank/all_qb_trees.txt')
-    subparser.add_argument("--question-bank-elmo-embeddings-path",
-                           default='../question-bank.hdf5')
-    subparser.add_argument("--wsj-train-trees-path",
-                           default='data/train.trees')
-    subparser.add_argument("--wsj-train-elmo-embeddings-path",
-                           default='../wsj-train.hdf5')
-    subparser.add_argument("--word-embedding-dim", type=int, default=100)
-    subparser.add_argument("--lstm-layers", type=int, default=2)
-    subparser.add_argument("--lstm-dim", type=int, default=250)
-    subparser.add_argument("--label-hidden-dim", type=int, default=250)
-    subparser.add_argument("--dropout", type=float, default=0.4)
-    subparser.add_argument("--evalb-dir", default="EVALB/")
-    subparser.add_argument("--batch-size", type=int, default=10)
-
-    subparser = subparsers.add_parser("test-on-question-bank")
-    subparser.set_defaults(callback=run_test_qbank)
-    for arg in dynet_args:
-        subparser.add_argument(arg)
-    subparser.add_argument("--stanford-split",
-                           required=True,
-                           help='Whether to use the Stanford train test split. '
-                                'Must be "true" or "false".')
-    subparser.add_argument("--model-path-base", required=True)
-    subparser.add_argument("--question-bank-trees-path",
-                           default='questionbank/all_qb_trees.txt')
-    subparser.add_argument("--question-bank-elmo-embeddings-path",
-                           default='../question-bank.hdf5')
-    subparser.add_argument("--evalb-dir", default="EVALB/")
-    subparser.add_argument("--split",
-                           required=True,
-                           help='Which split to test on. Must be "train", "dev" or "test".')
-    subparser.add_argument("--expt-name", required=True)
-
 
     subparser = subparsers.add_parser("test")
     subparser.set_defaults(callback=run_test)
@@ -1220,7 +1183,7 @@ def main():
     subparser.add_argument("--evalb-dir", default="EVALB/")
     subparser.add_argument("--trees-path", required=True)
     subparser.add_argument("--elmo-embeddings-path", required=True)
-    subparser.add_argument("--expt-name", required=True)
+    subparser.add_argument("--experiment-directory", required=True)
 
     subparser = subparsers.add_parser("save-components")
     for arg in dynet_args:
