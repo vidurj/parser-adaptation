@@ -741,7 +741,7 @@ def train_on_parses(args):
 def run_test(args):
     if not os.path.exists(args.experiment_directory):
         os.mkdir(args.experiment_directory)
-    print("Loading test trees from {}...".format(args.trees_path))
+    print("Loading test trees from {}...".format(args.input_file))
 
     test_treebank = trees.load_trees(args.trees_path)
     test_tokenized_lines = parse_trees_to_string_lines(test_treebank)
@@ -753,7 +753,7 @@ def run_test(args):
 
     print("Loaded {:,} test examples.".format(len(test_treebank)))
 
-    print("Loading model from {}...".format(args.model_path_base))
+    print("Loading model from {}...".format(args.model_path))
     model = dy.ParameterCollection()
     [parser] = dy.load(args.model_path, model)
 
