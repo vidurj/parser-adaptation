@@ -738,6 +738,29 @@ def train_on_parses(args):
                                        args)
 
 
+def run_test(args):
+    if not os.path.exists(args.experiment_directory):
+        os.mkdir(args.experiment_directory)
+    print("Loading test trees from {}...".format(args.trees_path))
+
+    test_treebank = trees.load_trees(args.trees_path)
+    test_tokenized_lines = parse_trees_to_string_lines(test_treebank)
+    test_embeddings_file = compute_elmo_embeddings(test_tokenized_lines,
+                                                   os.path.join(
+                                                       args.experiment_directory,
+                                                       'additional_embeddings'),
+                                                   args.path_to_python)
+
+    print("Loaded {:,} test examples.".format(len(test_treebank)))
+
+    print("Loading model from {}...".format(args.model_path_base))
+    model = dy.ParameterCollection()
+    [parser] = dy.load(args.model_path, model)
+
+    print("Parsing test sentences...")
+    check_performance(parser, test_treebank, test_embeddings_file, args)
+
+
 def run_train_question_bank(args):
     if not os.path.exists(args.experiment_directory):
         os.mkdir(args.experiment_directory)
@@ -924,24 +947,6 @@ def check_performance_and_save(parser,
     return best_dev_fscore, best_dev_model_path
 
 
-# TODO support no elmo case
-def run_test(args):
-    if not os.path.exists(args.experiment_directory):
-        os.mkdir(args.experiment_directory)
-    print("Loading test trees from {}...".format(args.trees_path))
-    sentence_embeddings = h5py.File(args.elmo_embeddings_path, 'r')
-    test_treebank = trees.load_trees(args.trees_path)
-
-    print("Loaded {:,} test examples.".format(len(test_treebank)))
-
-    print("Loading model from {}...".format(args.model_path_base))
-    model = dy.ParameterCollection()
-    [parser] = dy.load(args.model_path_base, model)
-
-    print("Parsing test sentences...")
-    check_performance(parser, test_treebank, range(len(test_treebank)), sentence_embeddings, args)
-
-
 def produce_parse_lists(args):
     if args.dev_parses:
         print('using dev')
@@ -1109,11 +1114,11 @@ def main():
     subparser = subparsers.add_parser("test-on-parses")
     for arg in dynet_args:
         subparser.add_argument(arg)
-    subparser.set_defaults(callback=test_on_parses)
+    subparser.set_defaults(callback=run_test)
     subparser.add_argument("--input-file", required=True)
     subparser.add_argument("--experiment-directory", required=True)
-    subparser.add_argument("--elmo-embeddings-file-path", required=True)
-    subparser.add_argument("--model-path-base", required=True)
+    subparser.add_argument("--model-path", required=True)
+    subparser.add_argument("--evalb-dir", default="EVALB/")
 
     subparser = subparsers.add_parser("train-on-partial-annotations")
     subparser.set_defaults(callback=train_on_brackets)
@@ -1171,16 +1176,6 @@ def main():
                            required=True,
                            help='Path to python environment with Allennlp. '
                                 'Example: /home/user/miniconda3/envs/allennlp/bin/python3')
-
-    subparser = subparsers.add_parser("test")
-    subparser.set_defaults(callback=run_test)
-    for arg in dynet_args:
-        subparser.add_argument(arg)
-    subparser.add_argument("--model-path-base", required=True)
-    subparser.add_argument("--evalb-dir", default="EVALB/")
-    subparser.add_argument("--trees-path", required=True)
-    subparser.add_argument("--elmo-embeddings-path", required=True)
-    subparser.add_argument("--experiment-directory", required=True)
 
     subparser = subparsers.add_parser("save-components")
     for arg in dynet_args:
