@@ -502,14 +502,12 @@ def train_on_brackets(args):
         print('Training on', additional_trees_path)
         additional_train_trees = load_parses(additional_trees_path)
         additional_trees_indices = list(range(len(additional_train_trees)))
-
-        if not args.no_elmo:
-            additional_tokenized_lines = parse_trees_to_string_lines(additional_train_trees)
-            additional_embeddings_file = compute_elmo_embeddings(additional_tokenized_lines,
-                                                                 os.path.join(
-                                                                     args.experiment_directory,
-                                                                     'additional_embeddings'),
-                                                                 args.path_to_python)
+        additional_tokenized_lines = parse_trees_to_string_lines(additional_train_trees)
+        additional_embeddings_file = compute_elmo_embeddings(additional_tokenized_lines,
+                                                             os.path.join(
+                                                                 args.experiment_directory,
+                                                                 'additional_embeddings'),
+                                                             args.path_to_python)
     else:
         print('No additional training trees.')
         additional_train_trees = []
@@ -577,12 +575,9 @@ def train_on_brackets(args):
         for index in additional_trees_indices[:50]:
             tree = additional_train_trees[index]
             sentence = [(leaf.tag, leaf.word) for leaf in tree.leaves]
-            if additional_embeddings_file is not None:
-                embeddings_np = additional_embeddings_file[str(index)][:, :, :]
-                assert embeddings_np.shape[1] == len(sentence)
-                embeddings = dy.inputTensor(embeddings_np)
-            else:
-                embeddings = None
+            embeddings_np = additional_embeddings_file[str(index)][:, :, :]
+            assert embeddings_np.shape[1] == len(sentence)
+            embeddings = dy.inputTensor(embeddings_np)
             loss = parser.span_parser(sentence, is_train=True, gold=tree,
                                       elmo_embeddings=embeddings)
             batch_losses.append(loss)
@@ -656,6 +651,8 @@ def train_on_parses(args):
                                                                      args.experiment_directory,
                                                                      'additional_embeddings'),
                                                                  args.path_to_python)
+        else:
+            additional_embeddings_file = None
     else:
         print('No additional training trees.')
         additional_train_trees = []
