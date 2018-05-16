@@ -3,13 +3,16 @@
 This repository contains the code used to generate the results described in [Extending a Parser to Distant Domains Using a Few Dozen Partially Annotated Examples](TODO) from ACL 2018, forked from the [Minimal Span Parser](https://github.com/mitchellstern/minimal-span-parser) repository.
 A more user friendly implementation of the parser is available in PyTorch through [AllenNLP](https://github.com/allenai/allennlp), and a demo at http://demo.allennlp.org/constituency-parsing.
 
-## Requirements and Setup
+## Setup
 
-* Python 3.5 or higher.
-* [AllenNLP](https://github.com/allenai/allennlp).
-* [DyNet](https://github.com/clab/dynet). We recommend installing DyNet from source with MKL support for significantly faster run time.
+* Run `pip install -r requirements.txt`.
 * [EVALB](http://nlp.cs.nyu.edu/evalb/). Before starting, run `make` inside the `EVALB/` directory to compile an `evalb` executable. This will be called from Python for evaluation.
 * Pre-trained models. Before starting, run `unzip models/model_dev=94.48.zip` and `unzip zipped/no_elmo_model_dev=92.34.zip` in the `models/` directory to extract the pre-trained models.
+
+### Pro Tip
+* [DyNet](https://github.com/clab/dynet). Installing DyNet from source with MKL support will result in significantly faster run time.
+
+
 
 
 ## Experiments
@@ -22,7 +25,6 @@ A new model can be trained using the command `python3 src/main.py train-on-parse
 Argument | Description | Default
 --- | --- | ---
 `--experiment-directory` | Path to the directory for this experiment | N/A
-`--no-elmo` | Whether to not use ELMo word embeddings | False
 `--numpy-seed` | NumPy random seed | Random
 `--word-embedding-dim` | Dimension of the learned word embeddings | 100
 `--lstm-layers` | Number of bidirectional LSTM layers | 2
@@ -38,35 +40,42 @@ The directory specified via `--experiment-directory` must exist and contain trai
 Any of the DyNet command line options can also be specified.
 
 ### Partial Annotations
-Examples of partial annotations can be found in `data/biochem-train.txt`. A model can trained on fine-tuned on partial annotations using the command `python3 src/main.py train-on-partial-annotations ...` with the following arguments:
+A model can trained on fine-tuned on partial annotations using the command `python3 src/main.py train-on-partial-annotations ...` with the following arguments:
 
 Argument | Description | Default
 --- | --- | ---
 `--experiment-directory` | Path to the directory for this experiment | N/A
 
 The directory specified via `--experiment-directory` must exist and contain partial annotations in a file named `partial_annotations.txt`, and a pre-trained model via files `model.data` and `model.meta`. If additional trees are to be used for fine-tuning, these must be placed in a file named `additional_trees.txt`.
-Any of the DyNet command line options can also be specified.
+Examples of partial annotations can be found in `data/biochem-train.txt`.
 
 
 ## Evaluation
 
-A saved model can be evaluated on a test corpus using the command `python3 src/main.py test ...` with the following arguments:
+### Full Parses
+
+A saved model can be evaluated on a partially annotated test corpus using the command `python3 src/main.py test-on-parses ...` with the following arguments:
 
 Argument | Description | Default
 --- | --- | ---
-`--model-path-base` | Path base of saved model | N/A
+`--input-file` | Path to parses to evaluate on | N/A
+`--model-path` | Path to saved model | N/A
+`--experiment-directory` | Path to the directory for this experiment | N/A
 `--evalb-dir` |  Path to EVALB directory | `EVALB/`
-`--trees-path` | Path to test trees | N/A
-`--elmo-embeddings-path` | Path to ELMo embeddings | N/A
 
-As above, any of the DyNet command line options can also be specified.
 
-As an example, after extracting the pre-trained model, you can evaluate it on the test set using the following command:
 
-```
-python3 src/main.py test --model-path-base models/model_dev=94.48 --trees-path data/test.trees --elmo-embeddings-path data/test.hdf5
-```
+### Partial Annotations
 
+ saved model can be evaluated on a test corpus using the command `python3 src/main.py test-on-partial-annotations ...` with the following arguments:
+
+Argument | Description | Default
+--- | --- | ---
+`--input-file` | Path to partially bracketed sentences to evaluate on | N/A
+`--model-path` | Path to saved model | N/A
+`--experiment-directory` | Path to the directory for this experiment | N/A
+
+Examples of partial annotations can be found in `data/biochem-dev.txt`.
 
 ## Parsing New Sentences
 The `parse` method of the parser can be used to parse new sentences. In particular, `parser.parse(sentence, elmo_embeddings)` will return a the predicted tree.
@@ -106,6 +115,9 @@ This directory contains the model's predictions under the various training condi
 4) biochem-predicted-parses-before-finetuning.txt - Parses predicted by RSP for sentences in BIOCHEMDEV trained on WSJTEST, but not fine-tuned on BIOCHEMTRAIN.
 5) biochem-predicted-parses-after-finetuning.txt - Parses predicted by RSP for sentences in BIOCHEMDEV trained on WSJTEST, and fine-tuned on BIOCHEMTRAIN.
 
+## Contact
+
+For questions, contact the first author of the paper TODO.
 
 ## Citation
 

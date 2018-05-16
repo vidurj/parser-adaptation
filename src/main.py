@@ -302,7 +302,8 @@ def compute_elmo_embeddings(tokenized_lines, expt_name):
                     word = "'"
                 elif word == "''":
                     word = '"'
-
+                else:
+                    word = word.replace('\\/', '/')
                 if '\\' in word:
                     print('-' * 100)
                     print(word)
@@ -740,7 +741,7 @@ def run_test(args):
     test_embeddings_file = compute_elmo_embeddings(test_tokenized_lines,
                                                    os.path.join(
                                                        args.experiment_directory,
-                                                       'additional_embeddings'))
+                                                       'test_embeddings'))
 
     print("Loaded {:,} test examples.".format(len(test_treebank)))
 
