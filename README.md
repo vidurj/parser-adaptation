@@ -1,6 +1,6 @@
 # Extending a Parser to Distant Domains
 
-This repository contains the code used to generate the results described in [Extending a Parser to Distant Domains Using a Few Dozen Partially Annotated Examples](TODO) from ACL 2018, forked from the [Minimal Span Parser](https://github.com/mitchellstern/minimal-span-parser) repository.
+This repository contains the code used to generate the results described in [Extending a Parser to Distant Domains Using a Few Dozen Partially Annotated Examples](http://arxiv.org/abs/1805.06556) from ACL 2018, forked from the [Minimal Span Parser](https://github.com/mitchellstern/minimal-span-parser) repository.
 A more user friendly implementation of the parser is available in PyTorch through [AllenNLP](https://github.com/allenai/allennlp), and a demo at http://demo.allennlp.org/constituency-parsing.
 
 ## Setup
@@ -39,7 +39,7 @@ Argument | Description | Default
 The directory specified via `--experiment-directory` must exist and contain train and dev parse trees in files named `train_trees.txt` and `dev_trees.txt` respectively. If additional trees are to be used for fine-tuning, these must be placed in a file named `additional_trees.txt`.
 Any of the DyNet command line options can also be specified.
 
-### Partial Annotations
+#### Partial Annotations
 A model can trained on fine-tuned on partial annotations using the command `python3 src/main.py train-on-partial-annotations ...` with the following arguments:
 
 Argument | Description | Default
@@ -50,9 +50,9 @@ The directory specified via `--experiment-directory` must exist and contain part
 Examples of partial annotations can be found in `data/biochem-train.txt`.
 
 
-## Evaluation
+### Evaluation
 
-### Full Parses
+#### Full Parses
 
 A saved model can be evaluated on a partially annotated test corpus using the command `python3 src/main.py test-on-parses ...` with the following arguments:
 
@@ -65,7 +65,7 @@ Argument | Description | Default
 
 
 
-### Partial Annotations
+#### Partial Annotations
 
  saved model can be evaluated on a test corpus using the command `python3 src/main.py test-on-partial-annotations ...` with the following arguments:
 
@@ -90,7 +90,7 @@ See the `run_test` function in `src/main.py` for an example of how a parser can 
 
 This directory contains pre-trained models.
 
-1) model_dev=94.48.zip - Compressed model trained on the WSJ corpus that gets 94.48 F1 on the development set and 94.28 F1 on the test set.
+1) model_dev=94.59.zip - Compressed model trained on the WSJ corpus that gets 94.59 F1 on the development set and 94.34 F1 on the test set.
 2) no_elmo_model_dev=92.34 - Compressed model train on the WSJ corpus without ELMo word vectors that gets 92.34 F1 on the development set.
 
 
@@ -117,12 +117,20 @@ This directory contains the model's predictions under the various training condi
 
 ## Contact
 
-For questions, contact the first author of the paper TODO.
+For questions, contact the first author of the paper [Extending a Parser to Distant Domains Using a Few Dozen Partially Annotated Examples](http://arxiv.org/abs/1805.06556).
 
 ## Citation
 
 If you use this software for research, please cite our paper as follows:
 
 ```
-TODO
+@InProceedings{Joshi-2018-ParserExtension,
+  author    = {Joshi, Vidur and Peters, Matthew and Hopkins, Mark},
+  title     = {Extending a Parser to Distant Domains Using a Few Dozen Partially Annotated Examples},
+  booktitle = {Proceedings of the 56th Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)},
+  month     = {July},
+  year      = {2018},
+  address   = {Melbourne, Australia},
+  publisher = {Association for Computational Linguistics},
+}
 ```
