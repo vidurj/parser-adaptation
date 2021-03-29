@@ -73,7 +73,7 @@ ptyprocess==0.5.2
 PuLP==1.6.8
 pyasn1==0.4.2
 pycparser==2.18
-Pygments==2.2.0
+Pygments==2.7.4
 pyhocon==0.3.35
 pyparsing==2.2.0
 python-dateutil==2.6.1
