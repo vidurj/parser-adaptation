@@ -67,7 +67,7 @@ Pillow==5.0.0
 plac==0.9.6
 preshed==1.0.0
 prompt-toolkit==1.0.15
-protobuf==3.5.1
+protobuf==3.15.0
 psycopg2==2.7.3.2
 ptyprocess==0.5.2
 PuLP==1.6.8
