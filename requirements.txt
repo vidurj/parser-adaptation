@@ -109,7 +109,7 @@ tornado==4.5.3
 tqdm==4.19.5
 traitlets==4.3.2
 typing==3.6.4
-ujson==1.35
+ujson==5.4.0
 urllib3==1.22
 uvloop==0.9.1
 wcwidth==0.1.7
