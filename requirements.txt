@@ -29,7 +29,7 @@ gevent==1.2.2
 google-compute-engine==2.7.5
 greenlet==0.4.13
 h5py==2.7.1
-html5lib==0.9999999
+html5lib==0.999999999
 httptools==0.0.10
 idna==2.6
 ipykernel==4.8.0
