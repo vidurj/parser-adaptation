@@ -85,7 +85,7 @@ regex==2017.4.5
 requests==2.18.4
 rsa==3.4.2
 s3transfer==0.1.12
-sanic==0.6.0
+sanic==20.12.7
 Sanic-Cors==0.9.3
 Sanic-Plugins-Framework==0.5.2.dev20180201
 scikit-learn==0.19.1
